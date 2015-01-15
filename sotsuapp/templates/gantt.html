@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-au">
+    <head>
+        <title>jQuery.Gantt</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+        <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="http://taitems.github.com/UX-Lab/core/css/prettify.css" />
+		<style type="text/css">
+			body {
+				font-family: Helvetica, Arial, sans-serif;
+				font-size: 13px;
+				padding: 0 0 50px 0;
+			}
+			.contain {
+				width: 800px;
+				margin: 0 auto;
+			}
+			h1 {
+				margin: 40px 0 20px 0;
+			}
+			h2 {
+				font-size: 1.5em;
+				padding-bottom: 3px;
+				border-bottom: 1px solid #DDD;
+				margin-top: 50px;
+				margin-bottom: 25px;
+			}
+
+		table {
+			border: 1px #000000 solid;
+		}
+
+		td {
+			border: 1px #000000 solid;
+		}
+
+		th {
+			border: 1px #000000 solid;
+			background-color: #f0ffff;
+		}
+
+		</style>
+
+	<script src="{{ STATIC_URL }}jquery-1.10.2.js"></script>
+	<script src="{{ STATIC_URL }}jquery.fn.gantt.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}jquery.table_transpose.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+	<script src="http://taitems.github.com/UX-Lab/core/js/prettify.js"></script>
+    <script>
+
+		$(function() {
+        //HTMLを生成 
+        	$.getJSON("{{ STATIC_URL }}output_d.json", function(data){
+				$('<tr><th>日付</th><th>場所</th><th>蛋白定数</th><th>糖定性</th><th>ウロビリノーゲン</th><th>潜血</th><th>ビリルビン</th><th>比重</th><th>pH</th><th>白血球数</th><th>赤血球数</th><th>hb</th><th>血小板数</th><th>総蛋白(TP)</th><th>アルブミン定量(BCP)</th><th>A/G</th><th>総ビリルビン</th><th>AST(GOT)</th><th>ALT(GPT)</th><th>LD(LDH)</th><th>ALP</th><th>γ-GTP</th><th>コリンエステラーゼ(ChE)</th><th>血糖</th><th>HbA1c(%)JDS</th><th>HbA1c(%)NG</th><th>総コレステロール</th><th>LDL</th><th>HDL</th><th>中性脂肪(TG)</th><th>尿酸</th><th>尿素窒素(BUN)</th><th>クレアチニン</th><th>eGFR</th><th>C反応性蛋白(CRP)</th><th>CK(CPK)</th><th>アミラーゼ(AMY)</th><th>ナトリウム(Na)</th><th>カリウム(K)</th><th>クロール</th><th>カルシウム</th><th>マグネシウム(Mg)</th><th>出血時間</th><th>活性化トロンボプラスチン時間</th><th>PT%</th><th>PT秒</th><th>PT INR</th><th>フィブリノーゲン</th><th>D-ダイマー</th><th>鉄(fe)</th><th>フェリチン</th><th>癌胎児性抗原(CEA)</th><th>CA19-9</th><th>不規則抗体判定</th></tr>').appendTo('#tbl thead')
+
+				$(data).each(function(){  
+					$('<tr><td>'+this.fields.date+
+						'</td><td>'+this.fields.place+
+						'</td><td>'+this.fields.tanpakuteisei+
+						'</td><td>'+this.fields.touteisei+
+						'</td><td>'+this.fields.urobirinogen+
+						'</td><td>'+this.fields.sennketu+
+						'</td><td>'+this.fields.birirubin+
+						'</td><td>'+this.fields.ketontai+
+						'</td><td>'+this.fields.hijyu+
+						'</td><td>'+this.fields.ph+
+						'</td><td>'+this.fields.wbc+
+						'</td><td>'+this.fields.rbc+
+						'</td><td>'+this.fields.hb+
+						'</td><td>'+this.fields.ht+
+						'</td><td>'+this.fields.kessyoubannsuu+
+
+						'</td><td>'+this.fields.soutanpaku+
+						'</td><td>'+this.fields.arubuminteiryou+
+						'</td><td>'+this.fields.ag+
+						'</td><td>'+this.fields.soubirirubin+
+						'</td><td>'+this.fields.ast+
+						'</td><td>'+this.fields.alt+
+						'</td><td>'+this.fields.ld+
+						'</td><td>'+this.fields.alp+
+						'</td><td>'+this.fields.ggtp+
+						'</td><td>'+this.fields.korinesuteraze+
+						'</td><td>'+this.fields.kettou+
+						'</td><td>'+this.fields.jds+
+						'</td><td>'+this.fields.ng+
+						'</td><td>'+this.fields.soukoresuteroru+
+						'</td><td>'+this.fields.ldl+
+						'</td><td>'+this.fields.hdl+
+						'</td><td>'+this.fields.tg+
+						'</td><td>'+this.fields.nyousan+
+						'</td><td>'+this.fields.bun+
+						'</td><td>'+this.fields.kureatinin+
+						'</td><td>'+this.fields.egrf+
+						'</td><td>'+this.fields.crp+
+						'</td><td>'+this.fields.cpk+
+						'</td><td>'+this.fields.amy+
+
+						'</td><td>'+this.fields.na+
+						'</td><td>'+this.fields.k+
+						'</td><td>'+this.fields.cl+
+						'</td><td>'+this.fields.ca+
+						'</td><td>'+this.fields.mg+
+
+						'</td><td>'+this.fields.syukketujikan+
+						'</td><td>'+this.fields.kasseikatoron+
+						'</td><td>'+this.fields.ptbyou+
+						'</td><td>'+this.fields.ptinr+
+						'</td><td>'+this.fields.fiburinogen+
+						'</td><td>'+this.fields.ddaima+
+						'</td><td>'+this.fields.fe+
+						'</td><td>'+this.fields.feritin+
+
+						'</td><td>'+this.fields.cea+
+						'</td><td>'+this.fields.ca199+
+						'</td><td>'+this.fields.hukisokuseikoutai+
+
+						'</td></tr>'
+					).appendTo('#tbl tbody');  
+            	})
+				$("#tbl").table_transpose();
+       		 })
+
+			"use strict";
+
+			$(".gantt").gantt({
+				source: "{{ STATIC_URL }}output_m.json"
+
+			});
+
+
+			prettyPrint();
+
+		});
+		
+
+    </script>
+
+    
+    </head>
+    <body>
+
+	<table id="tbl" align="center">
+		<thead>
+		</thead>
+  		<tbody>
+  		</tbody>
+	</table>
+
+
+
+		<div class="contain">
+		<div class="gantt"></div>
+
+</body>
+
+</html>

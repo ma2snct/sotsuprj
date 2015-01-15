@@ -1,0 +1,18 @@
+{% for user in re_list %}
+  <li><a href="/user/{{ patient.pk }}/">{{ user.username }}</a></li>
+{% endfor %}
+
+<!---
+	{% for tweet in twt_list %}
+	  <li>{{ tweet.text }} , {{ tweet.user }}</li>
+	  <li>{{ tweet.text }} , {{ tweet.user.get_profile.age }}</li>
+	{% endfor %}
+
+<body>
+	<ul>
+	{% for patient in patient_list %}
+		<li><a href="/patient/{{ patient.pk }}/">{{ patient.name }}</a></li>
+	{% endfor %}
+	</ul>
+</body>
+--->

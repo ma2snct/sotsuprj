@@ -1,0 +1,20 @@
+<head>
+
+</head>
+
+<body>
+  <h2>特研用アプリ</h2>
+
+  <form method="post" action="/login">{% csrf_token %}
+    User ID: <input type="text" name="user_id" />
+    <br />
+    Password: <input type="password" name="password" />
+    <br />
+    <input type="submit" value="login" />
+  </form>
+
+
+  <form method="get" action="/logout">
+    <input type="submit" value="logout" />
+  </form>
+</body>

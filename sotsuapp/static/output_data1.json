@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "myapp7.diagnosis", "fields": {"touteisei": "(-)", "patient": 1, "hijyu": "<=1.005", "ketontai": "(-)", "tanpakuteisei": "(-)", "hb": 13.2, "ht": 40.2, "place": "松阪市民病院", "sennketu": "(1+)", "kessyoubannsuu": 32.9, "date": "2013-08-06", "urobirinogen": "0.1", "ph": "7.0", "birirubin": "(-)", "rbc": 433.0, "wbc": 4300.0}}]

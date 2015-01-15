@@ -1,0 +1,22 @@
+[{ "name": "エブランチルカプセル"
+,"desc": ""
+,"values":
+[{ "id" : "b0"
+, "from" : "/Date(1377529200000)/"
+, "to" : "/Date(1378652400000)/"
+
+, "customClass": "ganttRed"
+}]
+},
+{ "name": "ウブレチド錠"
+,"desc": ""
+,"values":
+[{ "id" : "b0"
+, "from" : "/Date(1377529200000)/"
+, "to" : "/Date(1378652400000)/"
+
+, "customClass": "ganttBule"
+}]
+}
+]
+
