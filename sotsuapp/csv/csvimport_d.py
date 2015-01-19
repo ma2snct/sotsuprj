@@ -10,7 +10,7 @@ reader = csv.reader(open("sample4swap.csv"))
 for r in reader:
 	print r
 	d = Diagnosis()
-	d.user_id = 1
+	d.user_id = 4
 
 	d.date = r[0]
 	d.place = r[1]

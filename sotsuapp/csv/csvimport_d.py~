@@ -1,5 +1,5 @@
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "./sotsuapp.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "./sotsuprj.settings")
 
 import csv
 

@@ -20,6 +20,13 @@
     <input type="submit" value="add" />
   </form>
 
+<br>
+
+<p>診断データを追加する</p>
+  <form method="post" action="/add_data">{% csrf_token %}
+    <input type="submit" value="add data" />
+  </form>
+
 <!---
 	{% for tweet in twt_list %}
 	  <li>{{ tweet.text }} , {{ tweet.user }}</li>
