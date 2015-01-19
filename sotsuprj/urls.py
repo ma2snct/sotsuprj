@@ -10,4 +10,5 @@ urlpatterns = patterns('',
 	url(r'^logout', 'sotsuapp.views.logout_view'),
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^user/(?P<u_id>\d+)/$', 'sotsuapp.views.userinfo'),
+	url(r'^add_relation', 'sotsuapp.views.add_relation'),
 )

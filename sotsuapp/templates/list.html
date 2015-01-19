@@ -1,6 +1,24 @@
+<p>ようこそ {{ user.username }} さん</p>
+<br>
+
+<p>診断リスト</p>
 {% for user in re_list %}
   <li><a href="/user/{{ user.pk }}/">{{ user.username }}</a></li>
 {% endfor %}
+<br>
+
+<p>リレーションメンバーリスト</p>
+{% for user in rela_list %}
+  <li>{{ user.username }}</a></li>
+{% endfor %}
+<br>
+
+<p>relationを追加する</p>
+  <form method="post" action="/add_relation">{% csrf_token %}
+    User ID: <input type="text" name="user_id" />
+    <br />
+    <input type="submit" value="add" />
+  </form>
 
 <!---
 	{% for tweet in twt_list %}
