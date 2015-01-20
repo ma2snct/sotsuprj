@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 	url(r'^user/(?P<u_id>\d+)/$', 'sotsuapp.views.userinfo'),
 	url(r'^add_relation', 'sotsuapp.views.add_relation'),
 	url(r'^add_data', 'sotsuapp.views.add_data'),
+	url(r'^search', 'sotsuapp.views.search'),
 )

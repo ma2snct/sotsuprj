@@ -127,6 +127,7 @@ def add_relation(request):
 		return redirect('/list')
 
 def add_data(request):
+	# should make it better
 	import os
 	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "./../sotsuprj.settings")
 
@@ -213,6 +214,21 @@ def add_data(request):
 		else:
 			pass
 	return redirect('/list')
+
+def search(request):
+
+	search_user = User.objects.filter(username=request.POST['user_id'])
+	#print(add_users)
+
+	if search_user.count() is not 0:
+		#print(add_users)
+		#request.user.get_profile().reration.users.add(add_users[0]) #user object
+		return render_to_response('list.html', {'re_list':search_user}, context_instance=RequestContext(request))		
+
+
+	else:
+		return redirect('/list')
+	
 
 
 
