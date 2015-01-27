@@ -34,10 +34,14 @@
 
 
 <p>診断データを追加する</p>
-  <form method="post" action="/add_data">{% csrf_token %}
-    <input type="submit" value="add data" />
+  <form method="post" action="/add_diagnosis">{% csrf_token %}
+    <input type="submit" value="add diagnosis" />
   </form>
 
+<p>投薬データを追加する</p>
+  <form method="post" action="/add_medicine">{% csrf_token %}
+    <input type="submit" value="add medicine" />
+  </form>
 <!---
 	{% for tweet in twt_list %}
 	  <li>{{ tweet.text }} , {{ tweet.user }}</li>

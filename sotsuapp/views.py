@@ -126,8 +126,9 @@ def add_relation(request):
 	else:
 		return redirect('/list')
 
-def add_data(request):
+def add_diagnosis(request):
 	# should make it better
+	
 	import os
 	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "./../sotsuprj.settings")
 
@@ -142,7 +143,7 @@ def add_data(request):
 	i=0;
 	for r in reader:
 		d = Diagnosis()
-		d.user_id = 4
+		d.user_id = 2
 
 		d.date = r[0]
 		d.place = r[1]
@@ -207,12 +208,17 @@ def add_data(request):
 		d.hukisokuseikoutai = r[54]
 
 		d.save()
+	
+		#print(r)
+
+		"""
 		i=i+1
 
 		if i is 3:
 			break
 		else:
 			pass
+		"""
 	return redirect('/list')
 
 def search(request):
@@ -223,11 +229,38 @@ def search(request):
 	if search_user.count() is not 0:
 		#print(add_users)
 		#request.user.get_profile().reration.users.add(add_users[0]) #user object
-		return render_to_response('list.html', {'re_list':search_user}, context_instance=RequestContext(request))		
+		return render_to_response('list.html', {'re_list':search_user, 'rela_list':rela_list}, context_instance=RequestContext(request))		
 
 
 	else:
 		return redirect('/list')
+
+def add_medicine(request):
+	import os
+	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "./../sotsuprj.settings")
+
+	import csv
+	from sotsuapp.models import Medicine
+
+	reader = csv.reader(open("sample3m.csv"))
+
+	for r in reader:
+		print r
+		m = Medicine()
+		m.user_id = 2
+		m.m_date = r[0]
+		m.m_place = r[1]
+		m.department = r[2]
+		m.name = r[3]
+		m.amount = r[4]
+		m.days = r[5]
+		m.category = r[6]
+		m.save()
+
+		#print(r)
+
+	return redirect('/list')
+
 	
 
 

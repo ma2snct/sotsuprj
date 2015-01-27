@@ -4,12 +4,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sotsuprj.settings")
 import csv
 from sotsuapp.models import Medicine
 
-reader = csv.reader(open("sample4m.csv"))
+reader = csv.reader(open("sample3m.csv"))
 
 for r in reader:
 	print r
 	m = Medicine()
-	m.user_id = 1
+	m.user_id = 2
 	m.m_date = r[0]
 	m.m_place = r[1]
 	m.department = r[2]
